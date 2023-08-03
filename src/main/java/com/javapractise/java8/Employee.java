@@ -5,12 +5,14 @@ public class Employee {
     String name;
     String grade;
     double salary;
+    String email;
 
-    public Employee(int id, String name, String grade, double salary) {
+    public Employee(int id, String name, String grade, double salary,String email) {
         this.id = id;
         this.name = name;
         this.grade = grade;
         this.salary = salary;
+        this.email=email;
     }
 
     public int getId() {
@@ -45,6 +47,14 @@ public class Employee {
         this.salary = salary;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -52,6 +62,7 @@ public class Employee {
                 ", name='" + name + '\'' +
                 ", grade='" + grade + '\'' +
                 ", salary=" + salary +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
