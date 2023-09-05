@@ -2,6 +2,8 @@ package com.javapractise.java8.problems;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 // Given a list of integers, find out all the numbers starting with 1 using Stream functions?
 public class NumberOper1 {
@@ -15,5 +17,9 @@ public class NumberOper1 {
                 .forEach(System.out::println);
 
 
+        myList.stream().collect(Collectors.partitioningBy(t -> t % 2 == 0));
+
     }
+
+
 }

@@ -1,10 +1,12 @@
 package com.javapractise.java8.incubation26jul;
 
 import com.javapractise.java8.Customer;
+import com.javapractise.java8.Employee;
 import com.javapractise.java8.Order;
 import com.javapractise.java8.Product;
 import com.sun.org.apache.xpath.internal.operations.Or;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -126,6 +128,12 @@ public class OrderTest {
                 .collect(Collectors.toMap(Order::getId,Order -> Order.getProducts().size()))
                 .forEach((k,v)-> System.out.println(k+"::"+v));
 
+        orders.stream()
+                .collect(Collectors.groupingBy(Order::getId,
+                                Collectors.summingInt(order -> order.getProducts().size())))
+                        .forEach((k,v) -> System.out.println(k+"=="+v));
+
+
         // Exercise 12 — Produce a data map with order records grouped by customer
         System.out.println("\n\nExercise 12 — Produce a data map with order records grouped by customer");
 
@@ -140,6 +148,10 @@ public class OrderTest {
                 .collect(Collectors.groupingBy(Function.identity(),Collectors.summingDouble(order ->order.getProducts().
                                     stream().mapToDouble(Product::getPrice).sum())))
                         .forEach((k,v) -> System.out.println(k+"->"+v));
+
+
+
+
 
 
         //Exercise 14 — Obtain a data map with list of product name by category ; COLLECTORS.MAPPING usage
@@ -158,8 +170,7 @@ public class OrderTest {
                         .forEach((name,product)-> System.out.println(name+"->"+product.get().getPrice()));
 
 
-        // Exercise 16 — Get the most expensive product price in each category
-        System.out.println("\n\nExercise 16 — Get the most expensive product by category");
+        
 
     }
         private static void prepareData() {
@@ -437,4 +448,5 @@ public class OrderTest {
 
             orders = Arrays.asList(order1, order2, order3, order4, order5, order6, order7, order8, order9, order10, order11, order12, order13, order14, order15, order16, order17, order18, order19, order20, order21, order22, order23, order24, order25, order26, order27, order28, order29, order30, order31, order32, order33, order34, order35, order36, order37, order38, order39, order40, order41, order42, order43, order44, order45, order46, order47, order48, order49, order50);
         }
+
 }
